@@ -1,7 +1,7 @@
 import axios from "axios";
-import { error } from "jquery";
 
-const BASE_URL = "https://react-mini-projects-api.classbon.com";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL ;
 
 
 export const httpService = axios.create({

@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //import "/css/styles.css"
 import  "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import  "../node_modules/bootstrap/dist/js/bootstrap.bundle"
@@ -10,8 +12,8 @@ function App() {
 
   return (
     <>
-    <RouterProvider router={router}>
-    </RouterProvider>
+    <RouterProvider router={router}/>
+    <ToastContainer rtl />
     </>
   )
 }
