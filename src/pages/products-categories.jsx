@@ -45,6 +45,7 @@ const loadCategories = async (request) => {
   return response.data;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function categoriesLoader({request}){
   return defer({
     categories: loadCategories(request)
