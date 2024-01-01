@@ -5,7 +5,8 @@
 #### when you click one of the products you can see the details that product
 #### we list category and you can add or delete or update the list
 #### we have token in dashboard and when the token end you remove from admin dashboard and you should login again
-# clone it and cd to folder
-# $npm i
-# $npm run dev
-# enjoy the my code :)
+# for use ->
+## clone it and cd to folder
+## $npm i
+## $npm run dev
+## enjoy the my code :)
