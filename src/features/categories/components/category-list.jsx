@@ -7,12 +7,14 @@ import { Link,  } from "react-router-dom"
 import Pagination from "../../../components/pagination"
 import Spinner from "../../../components/spinner";
 import { memo } from "react";
+import { useCategoryContext } from "../category-context";
 
 
 const CategoryList = memo(({ categories:  { data, totalRecords },
 deleteCategory }) => {
     const navigation = useNavigation();
     /*const navigation = useNavigation();*/
+    const {setCategory}=useCategoryContext();
  return (
     <>
         <h2 className="display-2 text-center container">لیست کتگوری</h2>
@@ -22,7 +24,7 @@ deleteCategory }) => {
         <table className="table table-success table-striped container text-center  border border-success  rounded shadow" dir="rtl">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col" key={"#"}>#</th>
                     <th scope="col">نام</th>
                     <th scope="col">عملیات</th>
 
@@ -31,12 +33,12 @@ deleteCategory }) => {
             <tbody>
                 {data.map((category) => {
                     return (
-                    <>
+                        <>
                         <tr key={category.id}>
                             <td>{category.id}</td>
                             <td>{category.name}</td>
                             <td>
-                                <Link className="">
+                                <Link className="" onClick={()=>setCategory(category)}>
                                     <i className="bi bi-pencil-square link-dark "></i>
                                 </Link>
 

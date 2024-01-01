@@ -7,12 +7,14 @@ import Modal from "../components/modal";
 import { toast } from "react-toastify";
 //import { render } from "react-dom";
 import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
+import { useCategoryContext } from "../features/categories/category-context";
 
 const ProductsCategories = () => {
   const [showAddCategory , setShowAddCategory] = useState(false);
   const [showDeleteModal , setShowDeleteModal] = useState(false);
   const [selectedCategory , setSelectedCategory] = useState();
 
+  const {category} = useCategoryContext()
   const data = useLoaderData();  
   const navigate = useNavigate();
  
@@ -67,7 +69,7 @@ const ProductsCategories = () => {
       </button>
     </div>
    {
-    showAddCategory && <AddOrUpdateCategory setShowAddCategory={setShowAddCategory}/>
+    (showAddCategory || category) && <AddOrUpdateCategory setShowAddCategory={setShowAddCategory}/>
    }
     <Suspense fallback={<p className="test-secondary display-3">...در حال دریافت داده ها</p>}>
 
