@@ -1,4 +1,7 @@
-import { useLoaderData } from "react-router-dom"
+/* eslint-disable react/react-in-jsx-scope */
+
+
+//import { useLoaderData } from "react-router-dom"
 import Order from "./order";
 
 const OrderList = ({orders}) => {

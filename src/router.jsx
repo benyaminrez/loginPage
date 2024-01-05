@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { createBrowserRouter } from "react-router-dom";
 import Login, { loginAction } from "./features/identity/components/login";
 import Register, { registerAction } from "./features/identity/components/register";
@@ -6,12 +7,15 @@ import MainLayout from "./layouts/main-layout";
 import Orders, { ordersLoader } from "./pages/orders";
 import ProductsCategories, { categoriesLoader } from "./pages/products-categories";
 import OrderDetails, { orderDetailsLoader } from "./features/orders/components/order-details";
+import { CategoryProvider } from "./features/categories/category-context";
+import NotFound from "./pages/not-found";
 
 
 const router = createBrowserRouter([
    {
 path: '/',
 element: <MainLayout/>,
+errorElement: <NotFound/>,
 children: [
     {
         element: <Orders/>,
@@ -25,7 +29,10 @@ children: [
 },
 {
     path:"/products-categories",
-    element:<ProductsCategories/>,
+    element:
+    <CategoryProvider>
+        <ProductsCategories/> 
+    </CategoryProvider>,
     loader: categoriesLoader
 },
 ]
@@ -46,6 +53,10 @@ children: [
                 errorElement: <Register/>
             },
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound/>
     }
 ]);
 
