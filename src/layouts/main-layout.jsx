@@ -1,25 +1,21 @@
 import { useEffect } from "react"
-import { Outlet, useNavigate } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
+import Orders from "../pages/orders"
 
-(() => {
-    'use strict'
-    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    tooltipTriggerList.forEach(tooltipTriggerEl => {
-      new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-  })()
+
   
 const MainLayout = () =>{
+  const navigate = useNavigate();
 const token = localStorage.getItem('token')
-const navigate = useNavigate();
-useEffect(()=>{
+//useEffect(()=>{
   
   if(!token) {
-    navigate('/Login')
+    return navigate('/login', {replace: true});
   }
-},[])
+//},[])
     return(
         <>
+            <div className="wrap" style={{ minHeight: "100vh", minWidth: "100%" }}>
   <nav className="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
     <div className="container-fluid">
     <div className="dropdown">
@@ -77,17 +73,17 @@ useEffect(()=>{
         </a>
       </li>
       <li>
-        <a href="#" className="nav-link text-white">
+        <Link className="nav-link text-white">
           سفارشات
           <i className="bi bi-cart-check me-3" width={"18"} height={"18"}></i>
-        </a>
+        </Link>
       </li>
     
    
       <li>
         <button className="btn btn-dark d-inline-flex align-items-center collapsed border-0 " data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse"> دسته بندی ها <i className="bi bi-chevron-down me-3"></i></button>
         <ul className="list-unstyled ps-3 collapse" id="contents-collapse">
-          <li><a className="d-inline-flex align-items-center rounded text-decoration-none opacity-75 btn btn-outline-info my-3 " href="#typography">لیست دسته  بندی ها  <i className="bi bi-list-task me-3"></i></a></li>
+          <li><Link to={"/products-categories"} className="d-inline-flex align-items-center rounded text-decoration-none opacity-75 btn btn-outline-info my-3 " href="#typography">لیست دسته  بندی ها  <i className="bi bi-list-task me-3"></i></Link></li>
           <li><a className="d-inline-flex align-items-center rounded text-decoration-none opacity-75 btn btn-outline-info " href="#images">ثبت دسته بندی <i className="bi bi-node-plus me-3"></i> </a></li>
       
         </ul>
@@ -102,8 +98,9 @@ useEffect(()=>{
       </div>
     </div>
   </nav>
-       {/*  <Outlet /> */}
-
+     <Outlet /> 
+  </div>
+ 
         </>
     )
 }
